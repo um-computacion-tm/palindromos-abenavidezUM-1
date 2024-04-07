@@ -1,19 +1,12 @@
 import unittest
 
 def palindrome(x):
-    x = x.lower()
+    x = x.replace(" ", "").lower()  
     if x == x[::-1]:
         return True
     else:
         return False
     
-""""    
-palabra = input('Palabra: ')
-resultado = palindrome(palabra)
-print(resultado)
-
-"""
-
 class TestIsPalindrome(unittest.TestCase):
     def test_with_a(self):
         input = "a"
@@ -34,6 +27,15 @@ class TestIsPalindrome(unittest.TestCase):
         input = "hola"
         result = palindrome(input)
         self.assertFalse(result)
-
+        
+    def test_with_quequen(self):
+        input = "quequen"
+        result = palindrome(input)
+        self.assertFalse(result)
+        
+    def test_with_neu_quen(self):  
+        input = "neu quen"
+        result = palindrome(input)
+        self.assertTrue(result)  
 
 unittest.main()
